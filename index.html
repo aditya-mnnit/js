@@ -12,11 +12,43 @@
         <h1>Password Generator</h1>
         <div class="displaycontainer">
               <input readonly placeholder="Password" class="pwddisplay" >
-              <button>
+              <button class="copybutton">
                 <span class="datacopy"></span>
                 <img src="images/copy.svg" alt="copy" width="23" height="23">
               </button>
         </div>
+        <div class="inputcontainer">
+            <div class="lengthcontainer">
+                <p>Password Length</p>
+                <p class="pwdlen">10</p>
+            </div>
+            <input type="range" min="1" max="20" class="slider" step="1">
+            <!-- checkboxes -->
+            <div>
+                <input type="checkbox" id="uppercase">
+                <label for="uppercase">Includes Uppercase Letters</label>
+                </div>
+                <div>
+                <input type="checkbox" id="lowercase">
+                <label for="lowercase">Includes Lowercase Letters</label>
+            </div>
+            <div>
+                <input type="checkbox" id="numbers">
+                <label for="numbers">Includes Numbers</label>
+            </div>
+            <div>
+                <input type="checkbox" id="symbols">
+                <label for="symbols">Includes Symbols</label>
+            </div>
+            <!-- strength -->
+            <div class="strengthcontainer">
+                <p>Strength</p>
+                <div class="dataindicator"></div>
+            </div>
+            <!-- generatepassword -->
+            <button class="generatebutton">Generate Password</button>
+        </div>
+
     </div>
     <script src="index.js"></script>
 </body>
