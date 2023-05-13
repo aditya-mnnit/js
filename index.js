@@ -9,7 +9,7 @@ const numbersCheck = document.querySelector("#numbers");
 const symbolsCheck = document.querySelector("#symbols");
 const indicator = document.querySelector("[data-indicator]");
 const generatebtn = document.querySelector(".generatebutton");
-const allchkbox = document.querySelectorAll("input[type=checkbox]");
+const allCheckBox = document.querySelectorAll("input[type=checkbox]");
 const symbols = '~`!@#$%^&*()_-+={[}]|:;"<,>.?/';
 let pwd="";
 let pwdlength=10;
@@ -53,12 +53,12 @@ function calcStrength() {
     if (numbersCheck.checked) hasNum = true;
     if (symbolsCheck.checked) hasSym = true;
   
-    if (hasUpper && hasLower && (hasNum || hasSym) && passwordLength >= 8) {
+    if (hasUpper && hasLower && (hasNum || hasSym) && pwdlength >= 8) {
       setIndicator("#0f0");
     } else if (
       (hasLower || hasUpper) &&
       (hasNum || hasSym) &&
-      passwordLength >= 6
+      pwdlength >= 6
     ) {
       setIndicator("#ff0");
     } else {
@@ -94,15 +94,15 @@ function f2()
 copybtn.addEventListener('click',f2);
 
 function handleCheckBoxChange() {
-    checkCount = 0;
+    checkcount = 0;
     allCheckBox.forEach( (checkbox) => {
         if(checkbox.checked)
-            checkCount++;
+            checkcount++;
     });
 
     //special condition
-    if(passwordLength < checkCount ) {
-        passwordLength = checkCount;
+    if(pwdlength < checkcount ) {
+        pwdlength = checkcount;
         handleSlider();
     }
 }
@@ -112,6 +112,29 @@ allCheckBox.forEach( (checkbox) => {
 })
 function f3()
 {
-
+if(checkcount<=0)
+return;
+if(pwdlength<checkcount)
+{
+    pwdlength=checkcount;
+    handleSlider();
+}
+pwd="";
+if(uppercaseCheck.checked)
+{
+pwd+=generateUpperCase();
+}
+if(lowercaseCheck.checked)
+{
+    pwd+=generateLowerCase();
+}
+if(numbersCheck.checked)
+{
+    pwd+=generateRandomNumber();
+}
+if(symbolsCheck.checked)
+{
+    pwd+=generateSymbol();
+}
 }
 generatebtn.addEventListener('click',f3);
